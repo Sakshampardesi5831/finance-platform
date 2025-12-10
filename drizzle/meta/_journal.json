@@ -15,6 +15,20 @@
       "when": 1764237905820,
       "tag": "0001_right_kitty_pryde",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1765280811115,
+      "tag": "0002_nosy_medusa",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1765347919339,
+      "tag": "0003_vengeful_revanche",
+      "breakpoints": true
     }
   ]
 }
