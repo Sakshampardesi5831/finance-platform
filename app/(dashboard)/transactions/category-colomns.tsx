@@ -1,0 +1,34 @@
+import { useOpenCategory } from "@/features/categories/hooks/use-open-category";
+import { TriangleAlertIcon } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { useOpenTransactions } from "@/features/transactions/hooks/use-open-transactions";
+type Props = {
+  id: string;
+  category: string;
+  categoryId: string;
+};
+
+export const CategoryColumn = ({ id, category, categoryId }: Props) => {
+  const { onOpen: onOpenCategory } = useOpenCategory();
+  const { onOpen: onOpenTransaction } = useOpenTransactions();
+  const onClick = () => {
+    if (categoryId) {
+      onOpenCategory(categoryId);
+    } else {
+      onOpenTransaction(id);
+    }
+  };
+
+  return (
+    <div
+      onClick={onClick}
+      className={cn(
+        "flex items-center justify-center cursor-pointer hover:underline",
+        !category && "text-rose-500"
+      )}
+    >
+      {!category && <TriangleAlertIcon className="mr-2 size-4 shrink-0" />}
+      {category || "UnCategorized"}
+    </div>
+  );
+};

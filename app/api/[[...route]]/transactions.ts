@@ -48,7 +48,7 @@ const app = new Hono()
           amount: transactions.amount,
           notes: transactions.notes,
           account: accounts.name,
-          accountId: transactions.id,
+          accountId: transactions.accountId,
         })
         .from(transactions)
         .innerJoin(accounts, eq(accounts.id, transactions.accountId))
@@ -101,11 +101,11 @@ const app = new Hono()
           amount: transactions.amount,
           notes: transactions.notes,
           account: accounts.name,
-          accountId: transactions.id,
+          accountId: transactions.accountId,
         })
         .from(transactions)
         .innerJoin(accounts, eq(accounts.id, transactions.accountId))
-        // .leftJoin(categories, eq(transactions.categoryId, categories.id))
+        .leftJoin(categories, eq(transactions.categoryId, categories.id))
         .where(and(eq(transactions.id, id), eq(accounts.userId, auth.userId)));
       if (!data) {
         return c.json({ error: "Account not found" }, 404);
