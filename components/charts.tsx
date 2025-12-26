@@ -10,7 +10,7 @@ type Props = {
 }
 
 
-export const Charts = ({data=[]}:Props) => {
+export const Charts = ({}:Props) => {
   return (
     <div>Charts</div>
   )
