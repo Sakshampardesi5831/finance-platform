@@ -1,5 +1,5 @@
 "use client";
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, Suspense } from "react";
 import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Loader2, Plus } from "lucide-react";
@@ -26,7 +26,7 @@ const INITIAL_IMPORT_RESULTS = {
   meta: {},
 };
 
-const TransactionsPage = () => {
+const TransactionsPageContent = () => {
   const [variant, setVariants] = useState<VARIANTS>(VARIANTS.LIST);
   const [ConfirmDialog,confirm] = useSelectAccount();
   const [importResults, setImportResult] = useState(INITIAL_IMPORT_RESULTS);
@@ -134,6 +134,14 @@ const TransactionsPage = () => {
         </CardContent>
       </Card>
     </div>
+  );
+};
+
+const TransactionsPage = () => {
+  return (
+    <Suspense fallback={<div>Loading transactions...</div>}>
+      <TransactionsPageContent />
+    </Suspense>
   );
 };
 
