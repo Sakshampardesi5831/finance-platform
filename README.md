@@ -140,6 +140,27 @@ Open [http://localhost:3000](http://localhost:3000) to view the application.
 - `npm run db:migrate` - Run database migrations
 - `npm run db:push` - Push schema changes to database
 - `npm run db:studio` - Open Drizzle Studio
+- `npm run db:seed` - Seed database with sample data
+
+## Database Seeding
+
+The project includes a comprehensive seeding script to populate your database with realistic sample data:
+
+```bash
+npm run db:seed
+```
+
+**What gets seeded:**
+- 4 sample accounts (Checking, Savings, Credit Card, Investment)
+- 10 financial categories (Food & Dining, Transportation, Shopping, etc.)
+- 1000 randomized transactions with:
+  - Realistic amounts (both income and expenses)
+  - Random dates from 2023 to present
+  - Various payees (Walmart, Amazon, Starbucks, etc.)
+  - Proper account and category relationships
+  - Optional transaction notes
+
+**Note:** Make sure your `.env` file contains a valid `DATABASE_URL` before running the seed command.
 
 ## Key Features
 
@@ -172,6 +193,26 @@ The application uses Hono for API routes with the following endpoints:
 - `/api/accounts` - Account CRUD operations
 - `/api/categories` - Category CRUD operations  
 - `/api/transactions` - Transaction CRUD operations
+- `/api/summary` - Financial summary and analytics
+
+### Summary API
+
+The `/api/summary` endpoint provides comprehensive financial analytics:
+
+**Query Parameters:**
+- `from` (optional): Start date in YYYY-MM-DD format
+- `to` (optional): End date in YYYY-MM-DD format  
+- `accountId` (optional): Filter by specific account ID
+
+**Response Data:**
+- `remainingAmount`: Net balance (income - expenses)
+- `remainingChange`: Percentage change from previous period
+- `incomeAmount`: Total income for the period
+- `incomeChange`: Income percentage change from previous period
+- `expenseAmount`: Total expenses for the period
+- `expensesChange`: Expenses percentage change from previous period
+- `categories`: Top spending categories with amounts
+- `days`: Daily income/expense breakdown for charts
 
 ## Authentication
 
