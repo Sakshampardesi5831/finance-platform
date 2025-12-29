@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { Fragment } from "react";
 import { Card, CardContent, CardTitle, CardHeader } from "./ui/card";
 
 import {
@@ -11,27 +11,26 @@ import {
 } from "./ui/select";
 
 import {
-  AreaChart,
-  BarChart,
   FileSearch,
-  LineChart,
   Loader2,
+  PieChartIcon,
+  Radar,
+  TargetIcon,
 } from "lucide-react";
 import { useState } from "react";
-import AreaVariant from "./area-variant";
-import BarVariant from "./bar-variant";
-import LineVariant from "./line-variant";
+import PieVariant from "./pie-variant";
+import RadarVariant from "./radar-variant";
+import { RadialVariant } from "./radial-variant";
 import { Skeleton } from "./ui/skeleton";
 type Props = {
   data?: {
-    date: string;
-    income: number;
-    expense: number;
+    value: number;
+    name: string;
   }[];
 };
 
-export const Charts = ({ data = [] }: Props) => {
-  const [chartType, setChartType] = useState("area");
+export const SpendingCharts = ({ data = [] }: Props) => {
+  const [chartType, setChartType] = useState("pie");
 
   const onTypeChange = (type: string) => {
     // TODO ADD paywall
@@ -41,29 +40,29 @@ export const Charts = ({ data = [] }: Props) => {
   return (
     <Card className="border-none drop-shadow-sm">
       <CardHeader className="flex space-y-2 lg:space-y-0 lg:flex-row lg:items-center justify-between">
-        <CardTitle className="text-xl line-clamp-1">Transactions</CardTitle>
+        <CardTitle className="text-xl line-clamp-1">Categories</CardTitle>
         {/** TODO SELECT */}
         <Select defaultValue={chartType} onValueChange={onTypeChange}>
           <SelectTrigger className="lg:w-auto h-9 rounded-md px-3">
             <SelectValue placeholder="Chart Type" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="area">
+            <SelectItem value="pie">
               <div className="flex items-center">
-                <AreaChart className="size-4 mr-2 shrink-0 " />
-                <p className="line-clamp-1">Area Chart </p>
+                <PieChartIcon className="size-4 mr-2 shrink-0 " />
+                <p className="line-clamp-1">Pie Chart</p>
               </div>
             </SelectItem>
-            <SelectItem value="bar">
+            <SelectItem value="radar">
               <div className="flex items-center">
-                <BarChart className="size-4 mr-2 shrink-0 " />
-                <p className="line-clamp-1">Bar Chart </p>
+                <Radar className="size-4 mr-2 shrink-0 " />
+                <p className="line-clamp-1">Radar Chart </p>
               </div>
             </SelectItem>
-            <SelectItem value="line">
+            <SelectItem value="radial">
               <div className="flex items-center">
-                <LineChart className="size-4 mr-2 shrink-0 " />
-                <p className="line-clamp-1">Line Chart</p>
+                <TargetIcon className="size-4 mr-2 shrink-0 " />
+                <p className="line-clamp-1">Radial Chart</p>
               </div>
             </SelectItem>
           </SelectContent>
@@ -78,25 +77,18 @@ export const Charts = ({ data = [] }: Props) => {
             </p>
           </div>
         ) : (
-          (() => {
-            switch (chartType) {
-              case "area":
-                return <AreaVariant data={data} />;
-              case "line":
-                return <LineVariant data={data} />;
-              case "bar":
-                return <BarVariant data={data} />;
-              default:
-                return <AreaVariant data={data} />;
-            }
-          })()
+          <Fragment>
+            {chartType === "pie" && <PieVariant data={data} />}
+            {chartType === "radar" && <RadarVariant data={data} />}
+            {chartType === "radial" && <RadialVariant data={data} />}
+          </Fragment>
         )}
       </CardContent>
     </Card>
   );
 };
 
-export const ChartsLoading = () => {
+export const SpendingPieLoading = () => {
   return (
     <Card className="border-none drop-shadow-sm">
       <CardHeader className="flex space-y-2 lg:space-y-0 lg:flex-row lg:items-center justify-between ">
