@@ -22,7 +22,7 @@ A complete financial management application featuring transaction tracking, acco
 - **Transaction Tracking**: Record and categorize financial transactions
 - **Category Management**: Organize transactions with custom categories
 - **CSV Import**: Bulk import transactions from CSV files with column mapping
-- **Data Visualization**: Interactive charts and analytics
+- **Data Visualization**: Interactive charts and analytics with multiple chart variants (Area, Bar, Line, Pie)
 - **Authentication**: Secure user authentication with Clerk
 - **Responsive Design**: Mobile-friendly interface with modern UI components
 
@@ -182,9 +182,10 @@ npm run db:seed
 - Account-specific transaction filtering
 
 ### Data Visualization
-- Interactive charts and graphs
-- Financial analytics and insights
-- Responsive chart components
+- Interactive charts and graphs with multiple chart types (Area, Bar, Line, Pie)
+- Financial analytics and insights with comprehensive dashboard
+- Responsive chart components with customizable variants
+- Real-time data visualization for income/expense tracking
 
 ## API Routes
 

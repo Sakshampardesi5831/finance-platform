@@ -4,6 +4,7 @@ import Navigation from "./Navigation";
 import { ClerkLoaded, ClerkLoading } from "@clerk/nextjs";
 import { Loader2 } from "lucide-react";
 import WelcomeMessage from "./WelcomeMessage";
+import Filters from "./filters";
 const Header = () => {
   return (
     <header className="bg-gradient-to-b from-blue-700 to-blue-500 px-4 py-8 lg:px-14 pb-36">
@@ -21,6 +22,7 @@ const Header = () => {
           </ClerkLoaded>
         </div>
         <WelcomeMessage/>
+        <Filters/>
       </div>
     </header>
   );

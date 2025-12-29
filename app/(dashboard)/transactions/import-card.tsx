@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
 import ImportTable from "./import-table";
 import { convertAmountToMiliunits } from "@/lib/utils";
 import { format, parse } from "date-fns";

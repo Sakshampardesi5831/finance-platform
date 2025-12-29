@@ -1,11 +1,10 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { format } from "date-fns";
 import {
   Tooltip,
   AreaChart,
   Area,
   XAxis,
-  YAxis,
   CartesianGrid,
   ResponsiveContainer,
 } from "recharts";

@@ -17,6 +17,10 @@ function PopoverTrigger({
   return <PopoverPrimitive.Trigger data-slot="popover-trigger" {...props} />
 }
 
+const PopoverClose = PopoverPrimitive.Close
+
+
+
 function PopoverContent({
   className,
   align = "center",
@@ -45,4 +49,4 @@ function PopoverAnchor({
   return <PopoverPrimitive.Anchor data-slot="popover-anchor" {...props} />
 }
 
-export { Popover, PopoverTrigger, PopoverContent, PopoverAnchor }
+export { Popover, PopoverTrigger, PopoverContent, PopoverAnchor,PopoverClose }

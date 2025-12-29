@@ -2,7 +2,6 @@ import { Hono } from "hono";
 import { db } from "@/db/drizzle";
 import { categories, insertCategoriesSchema } from "@/db/schema";
 import { clerkMiddleware, getAuth } from "@hono/clerk-auth";
-import { HTTPException } from "hono/http-exception";
 import { createId } from "@paralleldrive/cuid2";
 import { and, eq, inArray } from "drizzle-orm";
 import { zValidator } from "@hono/zod-validator";

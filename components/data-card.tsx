@@ -84,7 +84,7 @@ export const DataCard = ({
             end={value}
             decimals={2}
             decimalPlaces={2}
-            formattingFn={formatCurrency}
+            formattingFn={(n) => formatCurrency(n)}
           />
         </h1>
         <p

@@ -1,6 +1,6 @@
 'use client'
 import { SignUp,ClerkLoaded,ClerkLoading, } from "@clerk/nextjs";
-import {Loader, Loader2} from "lucide-react";
+import {Loader2} from "lucide-react";
 import Logo from "@/components/Logo";
 export default function Page() {
   return (

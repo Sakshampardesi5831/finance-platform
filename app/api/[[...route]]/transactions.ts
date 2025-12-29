@@ -3,12 +3,10 @@ import { db } from "@/db/drizzle";
 import {
   accounts,
   categories,
-  insertCategoriesSchema,
   insertTransactionSchema,
   transactions,
 } from "@/db/schema";
 import { clerkMiddleware, getAuth } from "@hono/clerk-auth";
-import { HTTPException } from "hono/http-exception";
 import { createId } from "@paralleldrive/cuid2";
 import { and, desc, eq, gte, inArray, lte, sql } from "drizzle-orm";
 import { zValidator } from "@hono/zod-validator";
