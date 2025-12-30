@@ -17,7 +17,7 @@ const Navigation = () => {
   };
   const routes = [
     {
-      href: "",
+      href: "/",
       label: "Overview",
     },
     {
