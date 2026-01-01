@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { IconType } from "react-icons";
 import { cn, formatCurrency, formatPercentage } from "@/lib/utils";
 import { VariantProps, cva } from "class-variance-authority";
@@ -59,6 +59,8 @@ export const DataCard = ({
   dateRange,
   variant,
 }: DataCardProps) => {
+  const [isMounted] = useState(() => typeof window !== "undefined");
+
   return (
     <Card className="border-none drop-shadow-sm">
       <CardHeader className="flex flex-row items-center justify-between gap-x-4">
@@ -73,19 +75,19 @@ export const DataCard = ({
         </div>
       </CardHeader>
       <CardContent>
-        {/* <div className="text-2xl font-bold">{value}</div>
-        <p className="text-xs text-muted-foreground">
-          {percentageChange}% from last period
-        </p> */}
         <h1 className="font-bold text-2xl mb-2 line-clamp-1 break-all">
-          <CountUp
-            preserveValue
-            start={0}
-            end={value}
-            decimals={2}
-            decimalPlaces={2}
-            formattingFn={(n) => formatCurrency(n)}
-          />
+          {isMounted ? (
+            <CountUp
+              preserveValue
+              start={0}
+              end={value || 0}
+              decimals={2}
+              decimalPlaces={2}
+              formattingFn={(n) => formatCurrency(n)}
+            />
+          ) : (
+            formatCurrency(value || 0)
+          )}
         </h1>
         <p
           className={cn(
@@ -94,7 +96,7 @@ export const DataCard = ({
             percentageChange < 0 && "text-rose-500"
           )}
         >
-          {formatPercentage(percentageChange)} from last period
+          {formatPercentage(percentageChange || 0)} from last period
         </p>
       </CardContent>
     </Card>
